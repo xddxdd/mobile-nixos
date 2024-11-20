@@ -20,14 +20,14 @@ let
   );
 
 in
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "lk2nd";
   version = "19.0";
 
   src = fetchFromGitHub {
     repo = "lk2nd";
     owner = "msm8916-mainline";
-    rev = "19.0";
+    rev = version;
     hash = "sha256-uSvifSRc5O6JtuwT4RkgcyKOiBUMLElqVN74xKNuvI4=";
   };
 
@@ -51,6 +51,7 @@ stdenv.mkDerivation {
   makeFlags =
     [
       "lk2nd-${overrideDevice}"
+      "LK2ND_VERSION=${version}"
       "LD=arm-none-eabi-ld"
       "TOOLCHAIN_PREFIX=arm-none-eabi-"
     ]
