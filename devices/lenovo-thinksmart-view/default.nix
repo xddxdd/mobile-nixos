@@ -44,6 +44,7 @@ in
     mobile.boot.stage-1.kernel = {
       package = pkgs.callPackage ./kernel { };
       modular = true;
+      allowMissingModules = false;
       modules = [
         "msm"
         "panel_lenovo_cd_18781y_ft8201"
